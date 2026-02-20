@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        APP_NAME = "test-app"
+        APP_NAME = "Demo App"
     }
 
     stages {
@@ -16,7 +16,7 @@ pipeline {
 
         stage('Build') {
             steps {
-                echo "Building ${test-app}"
+                echo "Building ${APP_NAME}"
                 sh "echo Build completed"
             }
         }
@@ -30,11 +30,21 @@ pipeline {
 
         stage('Deploy') {
             steps {
-                echo "Deploying ${test-app}"
+                echo "Deploying ${APP_NAME}"
                 sh "echo Deployment done"
             }
         }
     }
 
-    
+    post {
+        always {
+            echo "Pipeline execution finished."
+        }
+        success {
+            echo "Pipeline executed successfully!"
+        }
+        failure {
+            echo "Pipeline failed!"
+        }
+    }
 }
