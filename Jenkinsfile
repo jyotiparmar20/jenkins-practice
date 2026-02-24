@@ -2,10 +2,9 @@ pipeline {
     agent any
 
     stages {
-
-        stage('Run') {
+        stage('checkout') {
             steps {
-                echo 'Running application setup...'
+                git branch: 'main' url: 'https://github.com/jyotiparmar20/jenkins-practice.git'
             }
         }
 
