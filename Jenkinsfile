@@ -12,7 +12,9 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building the project...'
-                sh 'mvn clean package'
+                sh '''
+                cd backend
+                mvn clean package'''
             }
         }
 
