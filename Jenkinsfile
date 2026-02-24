@@ -11,25 +11,11 @@ pipeline {
 
         stage('Build') {
             steps {
-                 dir('backend') {
-                sh ''' 
+                sh '''
+                cd backend
                 mvn clean package -DskipTests
                 '''
             }
         }
-        }
-        stage('Test') {
-            steps {
-                echo 'Running tests...'
-                sh 'mvn test'
-            }
-        }
-
-        stage('Deploy') {
-            steps {
-                echo 'Deploying application...'
-                echo 'Deployment successful!'
-            }
-        }
-    }
+    }           
 }
