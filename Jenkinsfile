@@ -11,11 +11,11 @@ pipeline {
 
         stage('Build') {
             steps {
-                echo 'Building the project...'
+                 dir('backend') {
                 sh ' mvn clean package'
             }
         }
-
+        }
         stage('Test') {
             steps {
                 echo 'Running tests...'
