@@ -17,22 +17,7 @@ pipeline {
                 '''
         }
     }
-}
+  }
+}        
+
         
-
-        stage('Test') {
-            steps {
-                sh 'mvn test'
-            }
-        }
-    }
-
-    post {
-        success {
-            echo 'Build Successfull'
-        }
-        failure {
-            echo 'Build Failed!'
-        }
-    }
-}
