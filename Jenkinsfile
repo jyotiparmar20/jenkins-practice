@@ -11,8 +11,10 @@ pipeline {
 
         stage('Build') {
             steps {
-                dir('EasyCRUD/backend') {
-                sh 'mvn clean package -DskipTests'
+                sh '''
+                cd backend
+                mvn clean package -DskipTests
+                '''
         }
     }
 }
