@@ -9,7 +9,7 @@ pipeline {
 
         stage('Checkout Code') {
             steps {
-                git branch: 'main', url: ''https://github.com/shubhamkalsait/EasyCRUD.git
+                git branch: 'main', url: 'https://github.com/shubhamkalsait/EasyCRUD.git'
             }
         }
 
@@ -31,7 +31,7 @@ pipeline {
 
     post {
         success {
-            echo 'Build Successful!'
+            echo 'Build Successfull'
         }
         failure {
             echo 'Build Failed!'
