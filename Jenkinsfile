@@ -1,57 +1,40 @@
-
-
 pipeline {
     agent any
 
     tools {
-        maven 'Maven-3'
+        maven 'Maven-3.9'
     }
 
     stages {
 
-        stage('Checkout') {
+        stage('Checkout Code') {
             steps {
-                git 'https://github.com/jyotiparmar20/jenkins-practice.git'
-            }
-        }
-
-        stage('Run') {
-            steps {
-                echo 'Running application setup...'
-                sh 'ls -la'
+                git branch: 'main', url: ''https://github.com/shubhamkalsait/EasyCRUD.git
             }
         }
 
         stage('Build') {
             steps {
                 dir('EasyCRUD/backend') {
-                    sh 'mvn clean package -DskipTests'
-                }
-            }
+                sh 'mvn clean package -DskipTests'
         }
+    }
+}
+        
 
         stage('Test') {
             steps {
-                dir('EasyCRUD/backend') {
-                    sh 'mvn test'
-                }
-            }
-        }
-
-        stage('Deploy') {
-            steps {
-                echo 'Deploying application...'
-                echo 'Deployment successful!'
+                sh 'mvn test'
             }
         }
     }
 
     post {
         success {
-            echo 'Pipeline executed successfully!'
+            echo 'Build Successful!'
         }
         failure {
-            echo 'Pipeline failed!'
+            echo 'Build Failed!'
         }
     }
 }
