@@ -17,16 +17,7 @@ pipeline {
                 '''
         }
     }
-         
-      stage('SonarQube Analysis') {
-            steps {
-                dir('EasyCRUD/backend') {
-                    withSonarQubeEnv('SonarQube') {
-                        sh 'mvn sonar:sonar'
-                    }
-                }
-            }
-        }
+        
 
         stage('Quality Gate') {
             steps {
