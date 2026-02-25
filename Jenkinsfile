@@ -22,9 +22,10 @@ pipeline {
             steps{
                 withsonarQubeEnv ('sonarqube-server') {
                     sh '''
+                    cd backend
                     mvn sonar:sonar \
                     -Dsonar.projectKey=EasyCRUD \
-                    -Dsonar .projectName=EasyCRUD
+                    -Dsonar.projectName=EasyCRUD
                     '''
         }
      } 
