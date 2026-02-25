@@ -14,22 +14,22 @@ pipeline {
                 sh '''
                 cd backend
                 mvn clean package -DskipTests
-               '''
+                '''
             }
-        } 
+        }
 
-         stage ('sonarQube Analysis') {
-            steps{
-                withsonarQubeEnv ('sonarqube-server') {
+        stage('SonarQube Analysis') {
+            steps {
+                withSonarQubeEnv('sonarqube-server') {
                     sh '''
                     cd backend
                     mvn sonar:sonar \
                     -Dsonar.projectKey=EasyCRUD \
                     -Dsonar.projectName=EasyCRUD
                     '''
+                }
+            }
         }
-     } 
-   }
+
+    }
 }
-}
-        
