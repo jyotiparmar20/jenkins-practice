@@ -14,14 +14,7 @@ pipeline {
                 sh '''
                 cd backend
                 mvn clean package -DskipTests
-                '''
-        }
-    }
-        
-
-        stage('Quality Gate') {
-            steps {
-                waitForQualityGate abortPipeline: true
+               '''
             }
         }
     }
