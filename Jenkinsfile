@@ -36,8 +36,17 @@ pipeline {
                      waitForQualityGate abortPipeline: true
              } 
          }
-     }
-    }     
+     } 
+        
+         stage('Upload Artifact to S3') {
+             steps {
+                 sh '''
+               aws s3 cp backend/target/*.jar \
+               s3://jo-bkt-1/
+                  '''
+          }
+     }          
+   }     
 }          
         
 
