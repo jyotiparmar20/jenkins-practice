@@ -16,10 +16,19 @@ pipeline {
                 mvn clean package -DskipTests
                '''
             }
+        } 
+
+         stage ('sonarQube Analysis') {
+            steps{
+                withsonarQubeEnv ('sonarqube-server') {
+                    sh '''
+                    mvn sonar:sonar \
+                    -Dsonar.projectKey=EasyCRUD \
+                    -Dsonar .projectName=EasyCRUD
+                    '''
         }
-    }
+     } 
+   }
 }
-    
-        
 
         
