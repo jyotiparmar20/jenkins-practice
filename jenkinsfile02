@@ -23,7 +23,7 @@ pipeline {
                         terraform init \
                         -backend-config="bucket=jo-bkt-1" \
                         -backend-config="key=eks/terraform.tfstate" \
-                        -backend-config="region=us-east-1" \
+                        -backend-config="region=us-east-1" 
                         '''
                 }
             }
