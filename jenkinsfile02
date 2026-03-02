@@ -16,22 +16,15 @@ pipeline {
 
         stage('Terraform Init') {
             steps {
-                withCredentials([[$class: 'AmazonWebServicesCredentialsBinding',
-                credentialsId: 'aws-eks']]) {
-
-                    sh '''
-                        terraform init \
-                        -backend-config="bucket=jo-bkt-1" \
-                        -backend-config="key=eks/terraform.tfstate" \
-                        -backend-config="region=us-east-1" 
+                  sh '''
+                        terraform init  
                         '''
                 }
             }
-        }
-
-        stage('Terraform Validate') {
-            steps {
-                sh 'terraform validate'
+        
+         stage('Terraform Validate') {
+             steps {
+                 sh 'terraform validate'
             }
         }
 
